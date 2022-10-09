@@ -1,0 +1,19 @@
+server:
+  port: 1031
+spring:
+  application:
+    name: LinkApis
+
+
+  profiles:
+    active: dev
+
+
+logging:
+  config: classpath:logback-spring.xml
+
+
+mybatis:
+  type-aliases-package: pro.goforit.common.entity.domain
+  mapper-locations: classpath:mapper/*.xml
+

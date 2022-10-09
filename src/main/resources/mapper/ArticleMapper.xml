@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pro.goforit.mapper.ArticleMapper">
+
+    <resultMap id="BaseResultMap" type="pro.goforit.common.entity.domain.Article">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="treeCatalogId" column="tree_catalog_id" jdbcType="BIGINT"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="labels" column="labels" jdbcType="VARCHAR"/>
+            <result property="content" column="content" jdbcType="VARCHAR"/>
+            <result property="originContent" column="origin_content" jdbcType="VARCHAR"/>
+            <result property="coverImageUrl" column="cover_image_url" jdbcType="VARCHAR"/>
+            <result property="ifReprinted" column="if_reprinted" jdbcType="TINYINT"/>
+            <result property="reprintedUrl" column="reprinted_url" jdbcType="VARCHAR"/>
+            <result property="ifTop" column="if_top" jdbcType="TINYINT"/>
+            <result property="ifPrivate" column="if_private" jdbcType="TINYINT"/>
+            <result property="heat" column="heat" jdbcType="BIGINT"/>
+            <result property="deleteFlag" column="delete_flag" jdbcType="TINYINT"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="INTEGER"/>
+            <result property="createUser" column="create_user" jdbcType="BIGINT"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateUser" column="update_user" jdbcType="BIGINT"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,tree_catalog_id,title,
+        labels,content,origin_content,
+        cover_image_url,if_reprinted,reprinted_url,
+        if_top,if_private,heat,
+        delete_flag,remark,status,
+        create_user,create_time,update_user,
+        update_time
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from article
+        where  id = #{id,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from article
+        where  id = #{id,jdbcType=BIGINT} 
+    </delete>
+
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="pro.goforit.common.entity.domain.Article" useGeneratedKeys="true">
+        insert into article
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="treeCatalogId != null">tree_catalog_id,</if>
+                <if test="title != null">title,</if>
+                <if test="labels != null">labels,</if>
+                <if test="content != null">content,</if>
+                <if test="originContent != null">origin_content,</if>
+                <if test="coverImageUrl != null">cover_image_url,</if>
+                <if test="ifReprinted != null">if_reprinted,</if>
+                <if test="reprintedUrl != null">reprinted_url,</if>
+                <if test="ifTop != null">if_top,</if>
+                <if test="ifPrivate != null">if_private,</if>
+                <if test="heat != null">heat,</if>
+                <if test="deleteFlag != null">delete_flag,</if>
+                <if test="remark != null">remark,</if>
+                <if test="status != null">status,</if>
+                <if test="createUser != null">create_user,</if>
+                <if test="createTime != null">create_time,</if>
+                <if test="updateUser != null">update_user,</if>
+                <if test="updateTime != null">update_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=BIGINT},</if>
+                <if test="treeCatalogId != null">#{treeCatalogId,jdbcType=BIGINT},</if>
+                <if test="title != null">#{title,jdbcType=VARCHAR},</if>
+                <if test="labels != null">#{labels,jdbcType=VARCHAR},</if>
+                <if test="content != null">#{content,jdbcType=VARCHAR},</if>
+                <if test="originContent != null">#{originContent,jdbcType=VARCHAR},</if>
+                <if test="coverImageUrl != null">#{coverImageUrl,jdbcType=VARCHAR},</if>
+                <if test="ifReprinted != null">#{ifReprinted,jdbcType=TINYINT},</if>
+                <if test="reprintedUrl != null">#{reprintedUrl,jdbcType=VARCHAR},</if>
+                <if test="ifTop != null">#{ifTop,jdbcType=TINYINT},</if>
+                <if test="ifPrivate != null">#{ifPrivate,jdbcType=TINYINT},</if>
+                <if test="heat != null">#{heat,jdbcType=BIGINT},</if>
+                <if test="deleteFlag != null">#{deleteFlag,jdbcType=TINYINT},</if>
+                <if test="remark != null">#{remark,jdbcType=VARCHAR},</if>
+                <if test="status != null">#{status,jdbcType=INTEGER},</if>
+                <if test="createUser != null">#{createUser,jdbcType=BIGINT},</if>
+                <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+                <if test="updateUser != null">#{updateUser,jdbcType=BIGINT},</if>
+                <if test="updateTime != null">#{updateTime,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="pro.goforit.common.entity.domain.Article">
+        update article
+        <set>
+                <if test="treeCatalogId != null">
+                    tree_catalog_id = #{treeCatalogId,jdbcType=BIGINT},
+                </if>
+                <if test="title != null">
+                    title = #{title,jdbcType=VARCHAR},
+                </if>
+                <if test="labels != null">
+                    labels = #{labels,jdbcType=VARCHAR},
+                </if>
+                <if test="content != null">
+                    content = #{content,jdbcType=VARCHAR},
+                </if>
+                <if test="originContent != null">
+                    origin_content = #{originContent,jdbcType=VARCHAR},
+                </if>
+                <if test="coverImageUrl != null">
+                    cover_image_url = #{coverImageUrl,jdbcType=VARCHAR},
+                </if>
+                <if test="ifReprinted != null">
+                    if_reprinted = #{ifReprinted,jdbcType=TINYINT},
+                </if>
+                <if test="reprintedUrl != null">
+                    reprinted_url = #{reprintedUrl,jdbcType=VARCHAR},
+                </if>
+                <if test="ifTop != null">
+                    if_top = #{ifTop,jdbcType=TINYINT},
+                </if>
+                <if test="ifPrivate != null">
+                    if_private = #{ifPrivate,jdbcType=TINYINT},
+                </if>
+                <if test="heat != null">
+                    heat = #{heat,jdbcType=BIGINT},
+                </if>
+                <if test="deleteFlag != null">
+                    delete_flag = #{deleteFlag,jdbcType=TINYINT},
+                </if>
+                <if test="remark != null">
+                    remark = #{remark,jdbcType=VARCHAR},
+                </if>
+                <if test="status != null">
+                    status = #{status,jdbcType=INTEGER},
+                </if>
+                <if test="createUser != null">
+                    create_user = #{createUser,jdbcType=BIGINT},
+                </if>
+                <if test="createTime != null">
+                    create_time = #{createTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="updateUser != null">
+                    update_user = #{updateUser,jdbcType=BIGINT},
+                </if>
+                <if test="updateTime != null">
+                    update_time = #{updateTime,jdbcType=TIMESTAMP},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+
+</mapper>

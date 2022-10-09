@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pro.goforit.mapper.TreeCatalogMapper">
+
+    <resultMap id="BaseResultMap" type="pro.goforit.common.entity.domain.TreeCatalog">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="parentId" column="parent_id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="owner" column="owner" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,parent_id,name,
+        owner
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tree_catalog
+        where  id = #{id,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from tree_catalog
+        where  id = #{id,jdbcType=BIGINT} 
+    </delete>
+
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="pro.goforit.common.entity.domain.TreeCatalog" useGeneratedKeys="true">
+        insert into tree_catalog
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="parentId != null">parent_id,</if>
+                <if test="name != null">name,</if>
+                <if test="owner != null">owner,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=BIGINT},</if>
+                <if test="parentId != null">#{parentId,jdbcType=BIGINT},</if>
+                <if test="name != null">#{name,jdbcType=VARCHAR},</if>
+                <if test="owner != null">#{owner,jdbcType=BIGINT},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="pro.goforit.common.entity.domain.TreeCatalog">
+        update tree_catalog
+        <set>
+                <if test="parentId != null">
+                    parent_id = #{parentId,jdbcType=BIGINT},
+                </if>
+                <if test="name != null">
+                    name = #{name,jdbcType=VARCHAR},
+                </if>
+                <if test="owner != null">
+                    owner = #{owner,jdbcType=BIGINT},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+
+</mapper>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pro.goforit.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="pro.goforit.common.entity.domain.User">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="username" column="username" jdbcType="VARCHAR"/>
+            <result property="password" column="password" jdbcType="VARCHAR"/>
+            <result property="nickName" column="nick_name" jdbcType="VARCHAR"/>
+            <result property="gender" column="gender" jdbcType="TINYINT"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+            <result property="role" column="role" jdbcType="VARCHAR"/>
+            <result property="experience" column="experience" jdbcType="BIGINT"/>
+            <result property="flag" column="flag" jdbcType="INTEGER"/>
+            <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+            <result property="githubId" column="github_id" jdbcType="BIGINT"/>
+            <result property="githubHomeUrl" column="github_home_url" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="permissions" column="permissions" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,username,password,
+        nick_name,gender,email,
+        role,experience,flag,
+        avatar,github_id,github_home_url,
+        create_time,update_time,permissions
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from user
+        where  id = #{id,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from user
+        where  id = #{id,jdbcType=BIGINT} 
+    </delete>
+
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="pro.goforit.common.entity.domain.User" useGeneratedKeys="true">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="username != null">username,</if>
+                <if test="password != null">password,</if>
+                <if test="nickName != null">nick_name,</if>
+                <if test="gender != null">gender,</if>
+                <if test="email != null">email,</if>
+                <if test="role != null">role,</if>
+                <if test="experience != null">experience,</if>
+                <if test="flag != null">flag,</if>
+                <if test="avatar != null">avatar,</if>
+                <if test="githubId != null">github_id,</if>
+                <if test="githubHomeUrl != null">github_home_url,</if>
+                <if test="createTime != null">create_time,</if>
+                <if test="updateTime != null">update_time,</if>
+                <if test="permissions != null">permissions,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=BIGINT},</if>
+                <if test="username != null">#{username,jdbcType=VARCHAR},</if>
+                <if test="password != null">#{password,jdbcType=VARCHAR},</if>
+                <if test="nickName != null">#{nickName,jdbcType=VARCHAR},</if>
+                <if test="gender != null">#{gender,jdbcType=TINYINT},</if>
+                <if test="email != null">#{email,jdbcType=VARCHAR},</if>
+                <if test="role != null">#{role,jdbcType=VARCHAR},</if>
+                <if test="experience != null">#{experience,jdbcType=BIGINT},</if>
+                <if test="flag != null">#{flag,jdbcType=INTEGER},</if>
+                <if test="avatar != null">#{avatar,jdbcType=VARCHAR},</if>
+                <if test="githubId != null">#{githubId,jdbcType=BIGINT},</if>
+                <if test="githubHomeUrl != null">#{githubHomeUrl,jdbcType=VARCHAR},</if>
+                <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+                <if test="updateTime != null">#{updateTime,jdbcType=TIMESTAMP},</if>
+                <if test="permissions != null">#{permissions,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="pro.goforit.common.entity.domain.User">
+        update user
+        <set>
+                <if test="username != null">
+                    username = #{username,jdbcType=VARCHAR},
+                </if>
+                <if test="password != null">
+                    password = #{password,jdbcType=VARCHAR},
+                </if>
+                <if test="nickName != null">
+                    nick_name = #{nickName,jdbcType=VARCHAR},
+                </if>
+                <if test="gender != null">
+                    gender = #{gender,jdbcType=TINYINT},
+                </if>
+                <if test="email != null">
+                    email = #{email,jdbcType=VARCHAR},
+                </if>
+                <if test="role != null">
+                    role = #{role,jdbcType=VARCHAR},
+                </if>
+                <if test="experience != null">
+                    experience = #{experience,jdbcType=BIGINT},
+                </if>
+                <if test="flag != null">
+                    flag = #{flag,jdbcType=INTEGER},
+                </if>
+                <if test="avatar != null">
+                    avatar = #{avatar,jdbcType=VARCHAR},
+                </if>
+                <if test="githubId != null">
+                    github_id = #{githubId,jdbcType=BIGINT},
+                </if>
+                <if test="githubHomeUrl != null">
+                    github_home_url = #{githubHomeUrl,jdbcType=VARCHAR},
+                </if>
+                <if test="createTime != null">
+                    create_time = #{createTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="updateTime != null">
+                    update_time = #{updateTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="permissions != null">
+                    permissions = #{permissions,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+
+</mapper>
