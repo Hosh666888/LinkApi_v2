@@ -28,16 +28,14 @@ public class ContextConfig {
     private static Accessor get() throws AuthException {
         Accessor accessor = _context.get();
 
-
-        //=========================   mock数据
-        User user = new User();
-        user.setId(1556843175833477122L);
-        user.setNickName("Максим, Андрей ");
-        user.setRole(RoleEnum.ADMIN.name());
-        user.setPermissions(PermissionEnum.REVIEW_ARTICLE.name()+Constants.SEPARATOR+PermissionEnum.SUBMIT_ARTICLE.name());
-        accessor = UserConverter.convert2Accessor(user);
-        //=========================
-
+        // //=========================   mock数据
+        // User user = new User();
+        // user.setId(1556843175833477122L);
+        // user.setNickName("Максим, Андрей ");
+        // user.setRole(RoleEnum.ADMIN.name());
+        // user.setPermissions(PermissionEnum.REVIEW_ARTICLE.name()+Constants.SEPARATOR+PermissionEnum.SUBMIT_ARTICLE.name());
+        // accessor = UserConverter.convert2Accessor(user);
+        // //=========================
 
         if (accessor==null){
             throw new AuthException("未读取到用户信息");
@@ -72,6 +70,10 @@ public class ContextConfig {
 
     public static boolean isVip() throws AuthException {
         return RoleEnum.VIP.equals(getRole());
+    }
+
+    public static boolean hasPermission(PermissionEnum permissionEnum) throws AuthException {
+        return getPermissions().contains(permissionEnum);
     }
 
 

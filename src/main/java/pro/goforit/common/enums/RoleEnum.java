@@ -9,5 +9,6 @@ package pro.goforit.common.enums;
 public enum RoleEnum {
     ADMIN,
     VIP,
-    NORMAL
+    NORMAL,
+    VISITOR
 }

@@ -16,4 +16,8 @@ public class Constants {
     public final static String ID_CANT_BE_EMPTY = "id不可为空";
 
 
+    public final static String AUTH_HEADER = "Authorization";
+    public final static String JWT_KEY = "LINK_EVERYTHING_2022@!#";
+
+
 }

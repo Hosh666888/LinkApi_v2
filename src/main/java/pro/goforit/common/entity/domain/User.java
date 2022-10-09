@@ -83,7 +83,7 @@ public class User implements Serializable {
      */
     private String permissions;
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -1792211697627934126L;
 
     /**
      * 

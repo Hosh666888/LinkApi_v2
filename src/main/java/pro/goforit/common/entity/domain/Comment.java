@@ -13,7 +13,7 @@ import java.util.Date;
  **/
 @Data
 public class Comment implements Serializable {
-    private static final long serialVersionUID = -6497591805919552366L;
+    private static final long serialVersionUID = 2157566652859209871L;
 
     private Long id;
 

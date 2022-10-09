@@ -3,6 +3,8 @@ package pro.goforit.common.entity;
 import lombok.Data;
 import pro.goforit.common.enums.RCode;
 
+import java.io.Serializable;
+
 /**
  * @author: Double>J
  * @email: zjj20001031@foxmail.com
@@ -10,7 +12,9 @@ import pro.goforit.common.enums.RCode;
  * @desc:
  **/
 @Data
-public class R<T> {
+public class R<T> implements Serializable {
+
+    private static final long serialVersionUID = 1940563938453505479L;
 
     private Integer code;
 
