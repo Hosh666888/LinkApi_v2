@@ -2,6 +2,8 @@ package pro.goforit.mapper;
 
 import pro.goforit.common.entity.domain.TreeCatalog;
 
+import java.util.List;
+
 /**
 * @author zjj20
 * @description 针对表【tree_catalog(树型目录)】的数据库操作Mapper
@@ -18,4 +20,10 @@ public interface TreeCatalogMapper {
 
     int updateByPrimaryKeySelective(TreeCatalog record);
 
+    /**
+     *      目前只找了一层
+     * @param id
+     * @return
+     */
+    List<Long> selectAllSonIdsAndItselfById(Long id);
 }

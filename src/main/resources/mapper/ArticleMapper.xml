@@ -42,6 +42,17 @@
         from article
         where  id = #{id,jdbcType=BIGINT} 
     </select>
+    <select id="selectByTreeCatalogIds" resultType="pro.goforit.common.entity.domain.Article">
+        select <include refid="Base_Column_List"/>
+        from article
+        where delete_flag = 0
+        <if test="ids!=null and ids.size>0">
+            and tree_catalog_id in
+            <foreach collection="ids" open="(" close=")" separator="," item="item">
+                #{item,jdbcType=BIGINT}
+            </foreach>
+        </if>
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from article

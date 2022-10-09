@@ -1,6 +1,9 @@
 package pro.goforit.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import pro.goforit.common.entity.domain.Article;
+
+import java.util.List;
 
 /**
 * @author zjj20
@@ -19,4 +22,5 @@ public interface ArticleMapper {
     int updateByPrimaryKeySelective(Article record);
 
 
+    List<Article> selectByTreeCatalogIds(@Param("ids") List<Long> ids);
 }

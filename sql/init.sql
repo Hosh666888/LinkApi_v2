@@ -34,7 +34,7 @@ create table comment
 (
     id bigint not null
         primary key,
-    article_id bigint not null,
+    article_id bigint,
     content varchar(255) not null,
     reply_id bigint null comment '回复评论id',
     create_user bigint not null comment '创建人',
