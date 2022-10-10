@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import pro.goforit.common.entity.domain.Article;
 import pro.goforit.common.exceptions.AuthException;
+import pro.goforit.common.exceptions.NoPermissionException;
 import pro.goforit.common.exceptions.NoSuchDataException;
 import pro.goforit.service.base.IArticleService;
 
@@ -26,12 +27,10 @@ class ArticleServiceImplTest {
     void insertSelective() throws AuthException {
         Article article = new Article();
         article.setContent("anduijahdiauhduaihduaihdauihahad");
-        article.setContent("""
-                adakjdadiajhdiahda
-                ajkdhsaudhauhduia
-                askdnauijdhuaid
-                amdjkandiandaidna
-                """);
+        article.setContent("adakjdadiajhdiahda\n" +
+                "                ajkdhsaudhauhduia\n" +
+                "                askdnauijdhuaid\n" +
+                "                amdjkandiandaidna");
         article.setCoverImageUrl("https://disposal.goforit.pro/files/hausdhauda.jpg");
         article.setLabels("测试");
         article.setRemark("asdadada");
@@ -41,12 +40,12 @@ class ArticleServiceImplTest {
     }
 
     @Test
-    void delete() {
+    void delete() throws AuthException, NoPermissionException {
         iArticleService.delete(1579003503050305536L);
     }
 
     @Test
-    void updateSelective() throws AuthException, NoSuchDataException {
+    void updateSelective() throws AuthException, NoSuchDataException, NoPermissionException {
         Article article = new Article();
         article.setId(1579003503050305536L);
         iArticleService.updateSelective(article);

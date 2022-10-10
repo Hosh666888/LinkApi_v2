@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistration
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,9 +19,11 @@ import java.util.List;
  **/
 @Configuration
 public class CustomMvcConfig extends WebMvcConfigurerAdapter {
+    @Resource
+    private MyInterceptor myInterceptor;
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new MyInterceptor()).excludePathPatterns("/login","/logout","/github");
+        registry.addInterceptor(myInterceptor).excludePathPatterns("/login","/logout","/github");
     }
 
 

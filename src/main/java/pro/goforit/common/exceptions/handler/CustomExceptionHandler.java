@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import pro.goforit.common.entity.R;
 import pro.goforit.common.exceptions.AuthException;
+import pro.goforit.common.exceptions.NoPermissionException;
 import pro.goforit.common.exceptions.NoSuchDataException;
 
 import java.util.List;
@@ -46,6 +47,14 @@ public class CustomExceptionHandler {
         log.error(e.getMessage(),e);
         return R.fail(e.getMessage());
     }
+
+
+    @ExceptionHandler(NoPermissionException.class)
+    public R<String> noPermissionException(NoPermissionException e){
+        log.error(e.getMessage(),e);
+        return R.fail(e.getMessage());
+    }
+
 
     @ExceptionHandler(value = BindException.class)
     public R<String> handler4BindException(BindException e){

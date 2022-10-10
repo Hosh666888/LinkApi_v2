@@ -8,9 +8,7 @@ import java.util.Date;
  * @TableName user
  */
 public class User implements Serializable {
-    /**
-     * 
-     */
+
     private Long id;
 
     /**
@@ -18,9 +16,7 @@ public class User implements Serializable {
      */
     private String username;
 
-    /**
-     * 
-     */
+
     private String password;
 
     /**
@@ -33,9 +29,7 @@ public class User implements Serializable {
      */
     private Integer gender;
 
-    /**
-     * 
-     */
+
     private String email;
 
     /**
@@ -58,43 +52,29 @@ public class User implements Serializable {
      */
     private String avatar;
 
-    /**
-     * 
-     */
+
     private Long githubId;
 
-    /**
-     * 
-     */
+
     private String githubHomeUrl;
 
-    /**
-     * 
-     */
+
     private Date createTime;
 
-    /**
-     * 
-     */
+
     private Date updateTime;
 
-    /**
-     * 
-     */
+
     private String permissions;
 
     private static final long serialVersionUID = -1792211697627934126L;
 
-    /**
-     * 
-     */
+
     public Long getId() {
         return id;
     }
 
-    /**
-     * 
-     */
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -113,16 +93,12 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    /**
-     * 
-     */
+
     public String getPassword() {
         return password;
     }
 
-    /**
-     * 
-     */
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -155,16 +131,12 @@ public class User implements Serializable {
         this.gender = gender;
     }
 
-    /**
-     * 
-     */
+
     public String getEmail() {
         return email;
     }
 
-    /**
-     * 
-     */
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -225,72 +197,52 @@ public class User implements Serializable {
         this.avatar = avatar;
     }
 
-    /**
-     * 
-     */
+
     public Long getGithubId() {
         return githubId;
     }
 
-    /**
-     * 
-     */
+
     public void setGithubId(Long githubId) {
         this.githubId = githubId;
     }
 
-    /**
-     * 
-     */
+
     public String getGithubHomeUrl() {
         return githubHomeUrl;
     }
 
-    /**
-     * 
-     */
+
     public void setGithubHomeUrl(String githubHomeUrl) {
         this.githubHomeUrl = githubHomeUrl;
     }
 
-    /**
-     * 
-     */
+
     public Date getCreateTime() {
         return createTime;
     }
 
-    /**
-     * 
-     */
+
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    /**
-     * 
-     */
+
     public Date getUpdateTime() {
         return updateTime;
     }
 
-    /**
-     * 
-     */
+
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 
-    /**
-     * 
-     */
+
     public String getPermissions() {
         return permissions;
     }
 
-    /**
-     * 
-     */
+
     public void setPermissions(String permissions) {
         this.permissions = permissions;
     }

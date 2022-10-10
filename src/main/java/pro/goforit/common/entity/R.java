@@ -41,7 +41,7 @@ public class R<T> implements Serializable {
     }
 
     public static R<String> fail(String message){
-        return new R<>(RCode.FAIL.getCode(),message,message);
+        return new R<>(RCode.FAIL.getCode(),message,null);
     }
 
     public static R<String > fail(){
@@ -53,7 +53,7 @@ public class R<T> implements Serializable {
     }
 
     public static R<String> authFail(String message){
-        return new R<>(RCode.AUTH_FAIL.getCode(), message,message);
+        return new R<>(RCode.AUTH_FAIL.getCode(), message,null);
     }
 
 

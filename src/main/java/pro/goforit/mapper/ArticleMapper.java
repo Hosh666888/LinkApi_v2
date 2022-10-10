@@ -2,6 +2,9 @@ package pro.goforit.mapper;
 
 import org.apache.ibatis.annotations.Param;
 import pro.goforit.common.entity.domain.Article;
+import pro.goforit.common.entity.dto.article.ArticleSelectDTO;
+import pro.goforit.common.entity.vo.article.ArticleSelectVO;
+import pro.goforit.common.entity.vo.article.ArticleVO;
 
 import java.util.List;
 
@@ -23,4 +26,7 @@ public interface ArticleMapper {
 
 
     List<Article> selectByTreeCatalogIds(@Param("ids") List<Long> ids);
+
+    //不返回origin_content(纯文本内容)
+    List<ArticleSelectVO> richSelect(ArticleSelectDTO dto);
 }

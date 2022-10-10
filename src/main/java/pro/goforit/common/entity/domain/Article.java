@@ -8,19 +8,13 @@ import java.util.Date;
  * @TableName article
  */
 public class Article implements Serializable {
-    /**
-     * 
-     */
+
     private Long id;
 
-    /**
-     * 
-     */
+
     private Long treeCatalogId;
 
-    /**
-     * 
-     */
+
     private String title;
 
     /**
@@ -63,19 +57,13 @@ public class Article implements Serializable {
      */
     private Integer ifPrivate;
 
-    /**
-     * 
-     */
+
     private Long heat;
 
-    /**
-     * 
-     */
+
     private Integer deleteFlag;
 
-    /**
-     * 
-     */
+
     private String remark;
 
     /**
@@ -84,80 +72,56 @@ public class Article implements Serializable {
      */
     private Integer status;
 
-    /**
-     * 
-     */
+
     private Long createUser;
 
-    /**
-     * 
-     */
+
     private Date createTime;
 
-    /**
-     * 
-     */
+
     private Long updateUser;
 
-    /**
-     * 
-     */
+
     private Date updateTime;
 
     private static final long serialVersionUID = 3759846614559630885L;
 
-    /**
-     * 
-     */
+
     public Long getId() {
         return id;
     }
 
-    /**
-     * 
-     */
+
     public void setId(Long id) {
         this.id = id;
     }
 
-    /**
-     * 
-     */
+
     public Long getTreeCatalogId() {
         return treeCatalogId;
     }
 
-    /**
-     * 
-     */
+
     public void setTreeCatalogId(Long treeCatalogId) {
         this.treeCatalogId = treeCatalogId;
     }
 
-    /**
-     * 
-     */
+
     public String getTitle() {
         return title;
     }
 
-    /**
-     * 
-     */
+
     public void setTitle(String title) {
         this.title = title;
     }
 
-    /**
-     * 标签 逗号分隔
-     */
+
     public String getLabels() {
         return labels;
     }
 
-    /**
-     * 标签 逗号分隔
-     */
+
     public void setLabels(String labels) {
         this.labels = labels;
     }
@@ -260,44 +224,32 @@ public class Article implements Serializable {
         this.ifPrivate = ifPrivate;
     }
 
-    /**
-     * 
-     */
+
     public Long getHeat() {
         return heat;
     }
 
-    /**
-     * 
-     */
+
     public void setHeat(Long heat) {
         this.heat = heat;
     }
 
-    /**
-     * 
-     */
+
     public Integer getDeleteFlag() {
         return deleteFlag;
     }
 
-    /**
-     * 
-     */
+
     public void setDeleteFlag(Integer deleteFlag) {
         this.deleteFlag = deleteFlag;
     }
 
-    /**
-     * 
-     */
+
     public String getRemark() {
         return remark;
     }
 
-    /**
-     * 
-     */
+
     public void setRemark(String remark) {
         this.remark = remark;
     }
@@ -318,58 +270,42 @@ public class Article implements Serializable {
         this.status = status;
     }
 
-    /**
-     * 
-     */
+
     public Long getCreateUser() {
         return createUser;
     }
 
-    /**
-     * 
-     */
+
     public void setCreateUser(Long createUser) {
         this.createUser = createUser;
     }
 
-    /**
-     * 
-     */
+
     public Date getCreateTime() {
         return createTime;
     }
 
-    /**
-     * 
-     */
+
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    /**
-     * 
-     */
+
     public Long getUpdateUser() {
         return updateUser;
     }
 
-    /**
-     * 
-     */
+
     public void setUpdateUser(Long updateUser) {
         this.updateUser = updateUser;
     }
 
-    /**
-     * 
-     */
+
     public Date getUpdateTime() {
         return updateTime;
     }
 
-    /**
-     * 
-     */
+
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }

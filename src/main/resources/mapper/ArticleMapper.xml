@@ -26,12 +26,44 @@
             <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
+    <resultMap id="SelectVOResultMap" type="pro.goforit.common.entity.vo.article.ArticleSelectVO">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="treeCatalogId" column="tree_catalog_id" jdbcType="BIGINT"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="labels" column="labels" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="originContent" column="origin_content" jdbcType="VARCHAR"/>
+        <result property="coverImageUrl" column="cover_image_url" jdbcType="VARCHAR"/>
+        <result property="ifReprinted" column="if_reprinted" jdbcType="TINYINT"/>
+        <result property="reprintedUrl" column="reprinted_url" jdbcType="VARCHAR"/>
+        <result property="ifTop" column="if_top" jdbcType="TINYINT"/>
+        <result property="ifPrivate" column="if_private" jdbcType="TINYINT"/>
+        <result property="heat" column="heat" jdbcType="BIGINT"/>
+        <result property="deleteFlag" column="delete_flag" jdbcType="TINYINT"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="createUser" column="create_user" jdbcType="BIGINT"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateUser" column="update_user" jdbcType="BIGINT"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="nickName" column="nickName" jdbcType="VARCHAR"/>
+    </resultMap>
+
     <sql id="Base_Column_List">
         id,tree_catalog_id,title,
         labels,content,origin_content,
         cover_image_url,if_reprinted,reprinted_url,
         if_top,if_private,heat,
         delete_flag,remark,status,
+        create_user,create_time,update_user,
+        update_time
+    </sql>
+    <sql id="selectVoList">
+        id,tree_catalog_id,title,
+        labels,content,
+        cover_image_url,if_reprinted,reprinted_url,
+        if_top,if_private,heat,
+        remark,
         create_user,create_time,update_user,
         update_time
     </sql>
@@ -51,6 +83,75 @@
             <foreach collection="ids" open="(" close=")" separator="," item="item">
                 #{item,jdbcType=BIGINT}
             </foreach>
+        </if>
+    </select>
+    <select id="richSelect" resultMap="SelectVOResultMap" parameterType="pro.goforit.common.entity.dto.article.ArticleSelectDTO">
+        select
+         a.*
+        ,u.nick_name nickName
+        from
+        (
+            select
+                <include refid="selectVoList"/>
+            from article
+            <where>
+                delete_flag = 0
+                <if test="ids!=null and id.size>0">
+                    and id in
+                    <foreach collection="ids" item="item" separator="," open="(" close=")">
+                        #{item,jdbcType=BIGINT}
+                    </foreach>
+                </if>
+                <if test="treeCatalogId!=null">
+                    and treeCatalogId = #{treeCatalogId,jdbcType=BIGINT}
+                </if>
+                <if test="title!=null and title!=''">
+                    and title like concat('%',#{title,jdbcType=VARCHAR},'%')
+                </if>
+                <if test="label!=null and label!=''">
+                    and labels like concat('%',#{label,jdbcType=VARCHAR},'%')
+                </if>
+                <if test="keywords">
+                    and
+                    (
+                    title REGEXP #{keywords,jdbcType=VARCHAR}
+                    or origin_content REGEXP #{keywords,jdbcType=VARCHAR}
+                    )
+                </if>
+                <if test="ifReprinted!=null">
+                    and if_reprinted = #{ifReprinted,jdbcType=BOOLEAN}
+                </if>
+                <if test="ifTop!=null">
+                    and if_top = #{ifTop,jdbcType=BOOLEAN}
+                </if>
+                and if_private = #{ifPrivate,jdbcType=BOOLEAN}
+                <if test="createUser!=null">
+                    and create_user = #{createUser,jdbcType=BIGINT}
+                </if>
+                <if test="begin!=null">
+                    and create_time &gt;= #{begin,jdbcType=DATE}
+                </if>
+                <if test="end!=null">
+                    and create_time &lt;= #{end,jdbcType=DATE}
+                </if>
+            </where>
+        ) a
+        left join
+        (
+            select id,nick_name from user
+        ) u
+        on a.create_user = u.id
+        order by
+        <choose>
+            <when test="orderBy!=null and orderBy!=''">
+                #{orderBy}
+            </when>
+            <otherwise>
+                heat,create_time
+            </otherwise>
+        </choose>
+        <if test="ifAsc==false">
+            desc
         </if>
     </select>
 

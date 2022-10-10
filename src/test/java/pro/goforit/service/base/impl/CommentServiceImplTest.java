@@ -26,9 +26,7 @@ class CommentServiceImplTest {
     void insertSelective() throws AuthException {
         Comment comment = new Comment();
 
-        comment.setContent("""
-                真好呀 嘿嘿嘿
-                """);
+        comment.setContent("真好呀 嘿嘿嘿");
         comment.setReplyId(124141414L);
 
         commentService.insertSelective(comment);

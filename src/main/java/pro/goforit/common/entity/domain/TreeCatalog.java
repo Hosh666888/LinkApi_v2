@@ -7,9 +7,7 @@ import java.io.Serializable;
  * @TableName tree_catalog
  */
 public class TreeCatalog implements Serializable {
-    /**
-     * 
-     */
+
     private Long id;
 
     /**
@@ -22,23 +20,17 @@ public class TreeCatalog implements Serializable {
      */
     private String name;
 
-    /**
-     * 
-     */
+
     private Long owner;
 
     private static final long serialVersionUID = 8383059615372242219L;
 
-    /**
-     * 
-     */
+
     public Long getId() {
         return id;
     }
 
-    /**
-     * 
-     */
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -71,16 +63,12 @@ public class TreeCatalog implements Serializable {
         this.name = name;
     }
 
-    /**
-     * 
-     */
+
     public Long getOwner() {
         return owner;
     }
 
-    /**
-     * 
-     */
+
     public void setOwner(Long owner) {
         this.owner = owner;
     }

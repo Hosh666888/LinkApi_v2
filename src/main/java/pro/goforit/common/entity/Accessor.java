@@ -4,7 +4,6 @@ import lombok.Data;
 import pro.goforit.common.enums.PermissionEnum;
 import pro.goforit.common.enums.RoleEnum;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 

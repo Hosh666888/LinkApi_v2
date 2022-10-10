@@ -23,24 +23,17 @@ public class ContextConfig {
         _context.remove();
         _context.set(accessor);
     }
+    public static void remove(){
+        _context.remove();
+    }
 
 
     private static Accessor get() throws AuthException {
         Accessor accessor = _context.get();
 
-        // //=========================   mock数据
-        // User user = new User();
-        // user.setId(1556843175833477122L);
-        // user.setNickName("Максим, Андрей ");
-        // user.setRole(RoleEnum.ADMIN.name());
-        // user.setPermissions(PermissionEnum.REVIEW_ARTICLE.name()+Constants.SEPARATOR+PermissionEnum.SUBMIT_ARTICLE.name());
-        // accessor = UserConverter.convert2Accessor(user);
-        // //=========================
-
         if (accessor==null){
             throw new AuthException("未读取到用户信息");
         }
-
 
         return accessor;
     }
